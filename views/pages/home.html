@@ -1,8 +1,13 @@
 {{define "Home"}}
     {{ template "Header" }}
-        <h1 class="title">
-            INDEX PAGE
-        </h1>
-        <p>{{ .content }}</p>
+        <div class="card text-center">
+            <div class="card-header">
+                A Simple API Built with GO
+            </div>
+            <div style="min-height: 550px;" class="card-body d-flex card-body justify-content-center flex-column">
+                <h1 class="display-1 mb-3">Welcome</h1>
+                <p>{{ .content }}</p>
+            </div>
+        </div>
     {{ template "Footer" }}
 {{end}}

@@ -8,8 +8,10 @@ import (
 
 func Index(ctx *gin.Context) {
 
-	ctx.JSON(http.StatusCreated, gin.H{
-		"Test": "test",
+	// Rendering Html
+	ctx.HTML(http.StatusOK, "Home", gin.H{
+		"content": "Halaman Index",
+		"title":   "Home",
 	})
 
 }

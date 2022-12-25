@@ -4,6 +4,7 @@ import (
 	"simple-api/models"
 )
 
+// For Create User
 type RequestCreateUser struct {
 	FirstName   string `json:"first_name"`
 	LastName    string `json:"last_name"`

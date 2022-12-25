@@ -27,6 +27,7 @@ func StartServer() *gin.Engine {
 
 	// User
 	router.GET("/user", controllers.AllUser)
+	router.GET("/user/:userID", controllers.FindUser)
 
 	return router
 }

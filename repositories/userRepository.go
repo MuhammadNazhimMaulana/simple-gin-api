@@ -23,3 +23,16 @@ func (repo UserRepository) FindAll() (requests.ResponseGetUser, error) {
 		Total:        int64(len(users)),
 	}, nil
 }
+
+func (repo UserRepository) Find(id int) (requests.ResponseFindUser, error) {
+	user := models.User{}
+	repo.DB.Find(&user, id)
+
+	// Response
+	return requests.ResponseFindUser{
+		User:         user,
+		ResponseCode: "00",
+		Status:       "Success",
+		Total:        1,
+	}, nil
+}

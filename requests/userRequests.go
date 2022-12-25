@@ -9,3 +9,11 @@ type ResponseGetUser struct {
 	Status       string        `json:"status"`
 	Total        int64         `json:"total"`
 }
+
+// For Find One user
+type ResponseFindUser struct {
+	User         models.User `json:"user"`
+	ResponseCode string      `json:"responseCode"`
+	Status       string      `json:"status"`
+	Total        int64       `json:"total"`
+}

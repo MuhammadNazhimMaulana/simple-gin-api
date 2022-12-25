@@ -11,6 +11,7 @@ type UserRepository struct {
 	DB *gorm.DB
 }
 
+// Find All
 func (repo UserRepository) FindAll() (requests.ResponseGetUser, error) {
 	users := []models.User{}
 	repo.DB.Find(&users)
@@ -24,6 +25,7 @@ func (repo UserRepository) FindAll() (requests.ResponseGetUser, error) {
 	}, nil
 }
 
+// Find One
 func (repo UserRepository) Find(id int) (requests.ResponseFindUser, error) {
 	user := models.User{}
 	repo.DB.Find(&user, id)
@@ -31,6 +33,19 @@ func (repo UserRepository) Find(id int) (requests.ResponseFindUser, error) {
 	// Response
 	return requests.ResponseFindUser{
 		User:         user,
+		ResponseCode: "00",
+		Status:       "Success",
+		Total:        1,
+	}, nil
+}
+
+// Create One
+func (repo UserRepository) Create(user models.User) (requests.ResponseCreateUser, error) {
+	repo.DB.Create(&user)
+
+	// Response
+	return requests.ResponseCreateUser{
+		Data:         user,
 		ResponseCode: "00",
 		Status:       "Success",
 		Total:        1,

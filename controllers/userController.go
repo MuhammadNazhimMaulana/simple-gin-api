@@ -63,3 +63,27 @@ func FindUser(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, res)
 }
+
+func CreateUser(ctx *gin.Context) {
+	var req requests.RequestCreateUser
+	var res requests.ResponseCreateUser
+
+	// Check Error
+	if err := ctx.ShouldBindJSON(&req); err != nil {
+		ctx.AbortWithError(http.StatusBadRequest, err)
+	}
+
+	repo := repositories.UserRepository{
+		DB: db,
+	}
+
+	res, err := services.CreateUser(repo, req)
+
+	// Jika gagal
+	if err != nil {
+		res.Status = "Create User Failed"
+		res.ResponseCode = "400"
+	}
+
+	ctx.JSON(http.StatusOK, res)
+}

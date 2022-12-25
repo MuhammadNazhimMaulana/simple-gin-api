@@ -1,6 +1,17 @@
 package requests
 
-import "simple-api/models"
+import (
+	"simple-api/models"
+)
+
+type RequestCreateUser struct {
+	FirstName   string `json:"first_name"`
+	LastName    string `json:"last_name"`
+	Address     string `json:"address"`
+	DateOfBirth string `json:"date_of_birth"`
+	StatusUser  string
+	Gender      string
+}
 
 // For Getting All user
 type ResponseGetUser struct {
@@ -8,6 +19,14 @@ type ResponseGetUser struct {
 	ResponseCode string        `json:"responseCode"`
 	Status       string        `json:"status"`
 	Total        int64         `json:"total"`
+}
+
+// For Creating A User
+type ResponseCreateUser struct {
+	Data         models.User `json:"data"`
+	ResponseCode string      `json:"responseCode"`
+	Status       string      `json:"status"`
+	Total        int64       `json:"total"`
 }
 
 // For Find One user
